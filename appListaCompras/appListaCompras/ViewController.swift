@@ -32,14 +32,15 @@ class ViewController: UIViewController {
                 criarProduto(item: item)
             
         }else{
-            if buttonSalvar.currentTitle! == "Salvar Edição"{ // salvar a edicao, falta lógica
-
+            if produtoExiste() && buttonSalvar.currentTitle! == "Salvar Edição"{ // salvar a
+                editarProduto()
             }
 
         }
         listaProdutos()
         limpaTextField()
         buttonSalvar.setTitle("Salvar", for: .normal)
+        
         
     }
     
@@ -62,15 +63,16 @@ class ViewController: UIViewController {
 
     }
     
-    func editarProduto(produtoEditar:Item) { // corrigir lógica
+    func editarProduto() { // corrigir lógica
         if buttonSalvar.currentTitle! == "Salvar Edição"{
         for produto in arrayItens{
             if produto.nome == textFieldNome.text{
-                produto.nome = textFieldNome.text!
                 produto.quantidade = Int(textFieldQuantidade.text!)!
+                print("Altera")
             }
             
         }
+//            print("Altera")
         }
         
     }
@@ -126,13 +128,19 @@ class ViewController: UIViewController {
     }
     
 
-    
+    //MARK: Texfield
     func limpaTextField() { // limpar
         textFieldQuantidade.text = ""
         textFieldNome.text = ""
         buttonExcluir.isEnabled = false
         buttonSalvar.setTitle("Salvar", for: .normal)
     }
+    
+    func verificaTextField(){
+        // todo
+    }
+    
+    
     
 
     //MARK: ViewController

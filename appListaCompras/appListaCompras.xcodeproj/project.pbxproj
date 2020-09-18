@@ -13,7 +13,8 @@
 		1968229125124A8A0021C4CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1968228F25124A8A0021C4CE /* Main.storyboard */; };
 		1968229325124A8C0021C4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1968229225124A8C0021C4CE /* Assets.xcassets */; };
 		1968229625124A8C0021C4CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1968229425124A8C0021C4CE /* LaunchScreen.storyboard */; };
-		1968229E25124AFD0021C4CE /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968229D25124AFD0021C4CE /* Class.swift */; };
+		1968229E25124AFD0021C4CE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968229D25124AFD0021C4CE /* Item.swift */; };
+		D06C922A2514C2B700333443 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C92292514C2B700333443 /* UITextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +26,8 @@
 		1968229225124A8C0021C4CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1968229525124A8C0021C4CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1968229725124A8C0021C4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1968229D25124AFD0021C4CE /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
+		1968229D25124AFD0021C4CE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D06C92292514C2B700333443 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +63,8 @@
 				1968228925124A8A0021C4CE /* AppDelegate.swift */,
 				1968228B25124A8A0021C4CE /* SceneDelegate.swift */,
 				1968228D25124A8A0021C4CE /* ViewController.swift */,
-				1968229D25124AFD0021C4CE /* Class.swift */,
+				D06C92292514C2B700333443 /* UITextFieldExtension.swift */,
+				1968229D25124AFD0021C4CE /* Item.swift */,
 				1968228F25124A8A0021C4CE /* Main.storyboard */,
 				1968229225124A8C0021C4CE /* Assets.xcassets */,
 				1968229425124A8C0021C4CE /* LaunchScreen.storyboard */,
@@ -141,7 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1968229E25124AFD0021C4CE /* Class.swift in Sources */,
+				D06C922A2514C2B700333443 /* UITextFieldExtension.swift in Sources */,
+				1968229E25124AFD0021C4CE /* Item.swift in Sources */,
 				1968228E25124A8A0021C4CE /* ViewController.swift in Sources */,
 				1968228A25124A8A0021C4CE /* AppDelegate.swift in Sources */,
 				1968228C25124A8A0021C4CE /* SceneDelegate.swift in Sources */,
