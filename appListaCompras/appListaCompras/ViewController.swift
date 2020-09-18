@@ -25,21 +25,8 @@ class ViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func buttonSalvarAction(_ sender: Any) {
-        if !produtoExiste()  && buttonSalvar.currentTitle! != "Salvar Edição" { // se nao existe , chama a funçnao criar o produto
-            let item = Item(nome: textFieldNome.text!, quantidade: Int(textFieldQuantidade.text!)!)
-            criarProduto(item: item)
-            
-        }else{
-            if produtoExiste() && buttonSalvar.currentTitle! == "Salvar Edição"{ // salvar a
-                editarProduto()
-            }
-            
-        }
-        listaProdutos()
-        limpaTextField()
-        buttonSalvar.setTitle("Salvar", for: .normal)
-        
-        
+        salvarOuEditar()
+    
     }
     
     @IBAction func buttonLimparAction(_ sender: Any) {
@@ -59,6 +46,22 @@ class ViewController: UIViewController {
         arrayItens.append(item)
         print(buttonSalvar.currentTitle!)
         
+    }
+    
+    func salvarOuEditar()  {
+        if !produtoExiste()  && buttonSalvar.currentTitle! != "Salvar Edição" { // se nao existe , chama a funçnao criar o produto
+            let item = Item(nome: textFieldNome.text!, quantidade: Int(textFieldQuantidade.text!)!)
+            criarProduto(item: item)
+            
+        }else{
+            if produtoExiste() && buttonSalvar.currentTitle! == "Salvar Edição"{ // salvar a
+                editarProduto()
+            }
+            
+        }
+        buttonSalvar.setTitle("Salvar", for: .normal)
+        listaProdutos()
+        limpaTextField()
     }
     
     func editarProduto() { // corrigir lógica
