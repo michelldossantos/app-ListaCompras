@@ -27,16 +27,16 @@ class ViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func buttonSalvarAction(_ sender: Any) {
-        if !produtoExiste(nome: textFieldNome.text!)  && buttonSalvar.currentTitle! != "Salvar Edição" { // se nao existe , chama a funçnao criar o produto
+        if !produtoExiste()  && buttonSalvar.currentTitle! != "Salvar Edição" { // se nao existe , chama a funçnao criar o produto
             let item = Item(nome: textFieldNome.text!, quantidade: Int(textFieldQuantidade.text!)!)
                 criarProduto(item: item)
-        }else{
-            var produtoEditar  = nomeProdutoExistente()
             
-//            editarProduto() // se não chama pra editar
-//            buttonSalvar.setTitle("Salvar Edição", for: .normal)
+        }else{
+            if buttonSalvar.currentTitle! == "Salvar Edição"{ // salvar a edicao, falta lógica
+
+            }
+
         }
-        
         listaProdutos()
         limpaTextField()
         buttonSalvar.setTitle("Salvar", for: .normal)
@@ -44,11 +44,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonLimparAction(_ sender: Any) {
+        limpaTextField()
+        
     }
     
     @IBAction func buttonExcluirAction(_ sender: Any) {
+        excluirProduto()
         
     }
+    
+    //MARK: Func Produto
     
     func criarProduto(item: Item) { // salva o produto no array
     
@@ -57,7 +62,7 @@ class ViewController: UIViewController {
 
     }
     
-    func editarProduto(produtoEditar:Item) { // corrigir l;ogica
+    func editarProduto(produtoEditar:Item) { // corrigir lógica
         if buttonSalvar.currentTitle! == "Salvar Edição"{
         for produto in arrayItens{
             if produto.nome == textFieldNome.text{
@@ -70,55 +75,38 @@ class ViewController: UIViewController {
         
     }
     
-    func alteraNomeBotao(){
-        if buttonSalvar.currentTitle == "Salvar" {
-            buttonSalvar.setTitle("Salvar Edição", for: .normal)
+    func excluirProduto() {
+          if let itemExclui = textFieldNome.text {
+              for (index, produto) in arrayItens.enumerated(){
+                  if itemExclui == produto.nome{
+                      arrayItens.remove(at: index)
+                  }
+                  
+              }
+          }
+              limpaTextField()
+              listaProdutos()
+              }
+    
+    func produtoExiste() -> Bool { // verifica se o nome digitado na TexfilNome possui na lista
+            
+            for item in arrayItens {
+                if item.nome == textFieldNome.text {
+                    return true
+                }
+            }
+            return false
         }
         
-        
-    }
-    
-    func excluirProduto() {
-        
-    }
-    
-    
-    func produtoExiste(nome: String) -> Bool { // verifica se o nome passado já possui na lista
-        for item in arrayItens {
-            if item.nome == nome {
-                labelProduto.text = nome
-//                textFieldQuantidade.text = String(item.quantidade)
-                return true
+    func listaProdutos() { // lista todos os itens da lista
+            labelItens.text = ""
+            for item in arrayItens {
+                labelItens.text = labelItens.text! + item.nome + " "
+               
             }
         }
-        return false
-    }
     
-    func listaProdutos() { // lista todos os itens da lista
-        labelItens.text = ""
-        for item in arrayItens {
-            labelItens.text = labelItens.text! + item.nome + " "
-            //falta quebrar linha
-        }
-    }
-    
-    func limpaTextField() { // limpar
-        textFieldQuantidade.text = ""
-        textFieldNome.text = ""
-    }
-    
-    func nomeProdutoExistente() -> Item!{ // retotorna o produto existente
-        for produto in arrayItens{
-            if produto.nome == textFieldNome.text{
-               return produto
-               }
-           
-    }
-         return nil
-    }
-    
-    
-    func getQuantidadeDoItem(nomeProduto: String) -> Int{
+    func getQuantidadeDoItem(nomeProduto: String) -> Int{ // retorna a quantidade de um item do array
         for item in arrayItens{
             if item.nome == nomeProduto{
                 return item.quantidade
@@ -127,48 +115,50 @@ class ViewController: UIViewController {
         return 0
     }
     
+    //MARK: Botão Salvar
+    
+    func alteraNomeBotaoSalvar(){
+        if buttonSalvar.currentTitle == "Salvar" {
+            buttonSalvar.setTitle("Salvar Edição", for: .normal)
+        }
+        
+        
+    }
+    
 
     
+    func limpaTextField() { // limpar
+        textFieldQuantidade.text = ""
+        textFieldNome.text = ""
+        buttonExcluir.isEnabled = false
+        buttonSalvar.setTitle("Salvar", for: .normal)
+    }
     
+
     //MARK: ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        buttonExcluir.isEnabled = false // deixa o botão excluir desabilitado
         textFieldNome.delegate = self
         textFieldQuantidade.delegate = self
         
     }
+    
 }
 
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-//        if textField == textFieldNome{ // apertar return é a texfildNome
-//            if produtoExiste(nome: textFieldNome.text!){ // Verifica se o nome do produtp existe
-//                let produto = nomeProdutoExistente() // produto agora contém o item existente
-//                textFieldQuantidade.text = String (produto!.quantidade) // manda para o texfildQuantidade , a quntidade desse item
-//                buttonSalvar.setTitle("Salvar Edição", for: .normal) // produto existe , já altera o nome do botão
-//                    }
-//            textFieldQuantidade.becomeFirstResponder()
-//            }
-//        else{
-//                buttonSalvar.setTitle("Salvar", for: .normal)
-//
-//        }
-//
-//
-//        return true
-//    }
-        
-        
-        if textField == textFieldNome && !produtoExiste(nome: textFieldNome.text!){
+
+        if textField == textFieldNome && !produtoExiste(){
             textFieldQuantidade.becomeFirstResponder()
             
         }else{
             textFieldQuantidade.text = String(getQuantidadeDoItem(nomeProduto: textFieldNome.text!))
-            alteraNomeBotao()
-            
+            alteraNomeBotaoSalvar() // altera nome do botão salvar para Salvar Edição
+            buttonExcluir.isEnabled = true // ativa botão excluit
         }
+        
     return true
 }
     
