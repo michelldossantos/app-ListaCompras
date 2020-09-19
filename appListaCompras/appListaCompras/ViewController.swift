@@ -104,7 +104,7 @@ class ViewController: UIViewController {
     func listaProdutos() { // lista todos os itens da lista
         labelItens.text = ""
         for item in arrayItens {
-            labelItens.text = labelItens.text! + item.nome + " "
+            labelItens.text! += "\(item.nome) = \(item.quantidade) unidade(s) \n"
             
         }
     }
