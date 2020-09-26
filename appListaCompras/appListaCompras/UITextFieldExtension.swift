@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import  UIKit
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        
+        if textField == textFieldNome && !produtoExiste(){
+            textFieldQuantidade.becomeFirstResponder()
+            
+        }else{
+            textFieldQuantidade.text = String(getQuantidadeDoItem(nomeProduto: textFieldNome.text!))
+            alteraNomeBotaoSalvar() // altera nome do botão salvar para Salvar Edição
+            buttonExcluir.isEnabled = true // ativa botão excluit
+        }
+        
+        return true
+    }
+    
+}

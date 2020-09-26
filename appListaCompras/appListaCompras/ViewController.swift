@@ -23,20 +23,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelProduto: UILabel!
     @IBOutlet weak var labelItens: UILabel!
     
+    @IBOutlet weak var tableViewList: UITableView!
     //MARK: Actions
     @IBAction func buttonSalvarAction(_ sender: Any) {
         salvarOuEditar()
-    
     }
     
     @IBAction func buttonLimparAction(_ sender: Any) {
         limpaTextField()
-        
     }
     
     @IBAction func buttonExcluirAction(_ sender: Any) {
         excluirProduto()
-        
     }
     
     //MARK: Func Produto
@@ -102,11 +100,8 @@ class ViewController: UIViewController {
     }
     
     func listaProdutos() { // lista todos os itens da lista
-        labelItens.text = ""
-        for item in arrayItens {
-            labelItens.text! += "\(item.nome) = \(item.quantidade) unidade(s) \n"
-            
-        }
+        tableViewList.reloadData()
+
     }
     
     func getQuantidadeDoItem(nomeProduto: String) -> Int{ // retorna a quantidade de um item do array
@@ -152,25 +147,32 @@ class ViewController: UIViewController {
         buttonExcluir.isEnabled = false // deixa o botão excluir desabilitado
         textFieldNome.delegate = self
         textFieldQuantidade.delegate = self
+        tableViewList.delegate = self
+        tableViewList.dataSource = self
         
     }
     
 }
 
 
-extension ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-        
-        if textField == textFieldNome && !produtoExiste(){
-            textFieldQuantidade.becomeFirstResponder()
-            
-        }else{
-            textFieldQuantidade.text = String(getQuantidadeDoItem(nomeProduto: textFieldNome.text!))
-            alteraNomeBotaoSalvar() // altera nome do botão salvar para Salvar Edição
-            buttonExcluir.isEnabled = true // ativa botão excluit
-        }
-        
-        return true
-    }
+
+
+extension ViewController: UITableViewDelegate{
     
 }
+
+extension ViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        arrayItens.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = arrayItens[indexPath.row].nome
+        return cell
+    }
+    
+    
+}
+
+
