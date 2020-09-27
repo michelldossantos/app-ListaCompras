@@ -16,6 +16,7 @@
 		1968229E25124AFD0021C4CE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968229D25124AFD0021C4CE /* Item.swift */; };
 		D02A9F80251ED8AB00EA66CA /* funcProduto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02A9F7F251ED8AB00EA66CA /* funcProduto.swift */; };
 		D02A9F83251EDB1100EA66CA /* UITableViewDataSourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02A9F82251EDB1100EA66CA /* UITableViewDataSourceExtension.swift */; };
+		D02A9F86251EDB9A00EA66CA /* UITableViewDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02A9F85251EDB9A00EA66CA /* UITableViewDelegateExtension.swift */; };
 		D06C922A2514C2B700333443 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C92292514C2B700333443 /* UITextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		1968229D25124AFD0021C4CE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D02A9F7F251ED8AB00EA66CA /* funcProduto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = funcProduto.swift; sourceTree = "<group>"; };
 		D02A9F82251EDB1100EA66CA /* UITableViewDataSourceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDataSourceExtension.swift; sourceTree = "<group>"; };
+		D02A9F85251EDB9A00EA66CA /* UITableViewDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewDelegateExtension.swift; sourceTree = "<group>"; };
 		D06C92292514C2B700333443 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,16 +69,25 @@
 				1968228925124A8A0021C4CE /* AppDelegate.swift */,
 				1968228B25124A8A0021C4CE /* SceneDelegate.swift */,
 				1968228D25124A8A0021C4CE /* ViewController.swift */,
-				D06C92292514C2B700333443 /* UITextFieldExtension.swift */,
+				D02A9F88251EDBC800EA66CA /* Extensions */,
 				1968229D25124AFD0021C4CE /* Item.swift */,
 				1968228F25124A8A0021C4CE /* Main.storyboard */,
 				1968229225124A8C0021C4CE /* Assets.xcassets */,
 				1968229425124A8C0021C4CE /* LaunchScreen.storyboard */,
 				1968229725124A8C0021C4CE /* Info.plist */,
 				D02A9F7F251ED8AB00EA66CA /* funcProduto.swift */,
-				D02A9F82251EDB1100EA66CA /* UITableViewDataSourceExtension.swift */,
 			);
 			path = appListaCompras;
+			sourceTree = "<group>";
+		};
+		D02A9F88251EDBC800EA66CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D06C92292514C2B700333443 /* UITextFieldExtension.swift */,
+				D02A9F82251EDB1100EA66CA /* UITableViewDataSourceExtension.swift */,
+				D02A9F85251EDB9A00EA66CA /* UITableViewDelegateExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +167,7 @@
 				1968228A25124A8A0021C4CE /* AppDelegate.swift in Sources */,
 				1968228C25124A8A0021C4CE /* SceneDelegate.swift in Sources */,
 				D02A9F80251ED8AB00EA66CA /* funcProduto.swift in Sources */,
+				D02A9F86251EDB9A00EA66CA /* UITableViewDelegateExtension.swift in Sources */,
 				D02A9F83251EDB1100EA66CA /* UITableViewDataSourceExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
